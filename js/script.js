@@ -17,10 +17,11 @@ addGuestButton.addEventListener("click", function () {
     const guest = guestInput.value;
     // console.log(guest);
     if (guest !== "") {
-        let listItem = document.createElement("li");
-        listItem.innerText = guest;
-        guestList.append(listItem);
+        addToList(guest);
         clearInput();
+        //     let listItem = document.createElement("li");
+        //     listItem.innerText = guest;
+        //     guestList.append(listItem);    
     }
 });
 
@@ -28,3 +29,10 @@ addGuestButton.addEventListener("click", function () {
 const clearInput = function () {
     guestInput.value = "";
 };
+
+//  ====== REFACTORED CODE ====== 
+const addToList = function (guest) {
+    let listItem = document.createElement("li");
+    listItem.innerText = guest;
+    guestList.append(listItem);
+}
