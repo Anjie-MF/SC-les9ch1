@@ -70,3 +70,12 @@ const assignItems = function () {
         "Jalapeno Poppers",
         "Vegan Pinwheels"];
 };
+
+const allGuests = doucment.querySelectorAll(".guest-list li");
+for (let guest of allGuests) {
+    let randomPotluckIndex = Math.floor(Math.random() * potluckItems.length);
+    let randomPotluckItem = potluckItems[randompotluckIndex];
+    let listItem = document.createElement("li");
+    listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
+    assignedItems.append(listItem);
+}
