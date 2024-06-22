@@ -16,7 +16,6 @@ const assignButton = document.querySelector(".assign");
 const assignedItems = document.querySelector(".assigned-items");
 
 
-
 // Add an Event Listener & Create an Element
 addGuestButton.addEventListener("click", function () {
     const guest = guestInput.value;
@@ -36,12 +35,14 @@ const clearInput = function () {
     guestInput.value = "";
 };
 
+
 //  ====== REFACTORED CODE ====== 
 const addToList = function (guest) {
     let listItem = document.createElement("li");
     listItem.innerText = guest;
     guestList.append(listItem);
-}
+};
+//  ====== REFACTORED CODE ====== 
 
 const updateGuestCount = function () {
     const guests = document.querySelectorAll(".guest-list li");
@@ -68,14 +69,21 @@ const assignItems = function () {
         "Quinoa Salad",
         "Mac & Cheese",
         "Jalapeno Poppers",
-        "Vegan Pinwheels"];
+        "Vegan Pinwheels"
+    ];
+
+    const allGuests = document.querySelectorAll(".guest-list li");
+
+    for (let guest of allGuests) {
+        let randomPotluckIndex = Math.floor(Math.random() * potluckItems.length);
+        let randomPotluckItem = potluckItems[randomPotluckIndex];
+
+        let listItem = document.createElement("li");
+        listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
+        assignedItems.append(listItem);
+    }
 };
 
-const allGuests = doucment.querySelectorAll(".guest-list li");
-for (let guest of allGuests) {
-    let randomPotluckIndex = Math.floor(Math.random() * potluckItems.length);
-    let randomPotluckItem = potluckItems[randompotluckIndex];
-    let listItem = document.createElement("li");
-    listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
-    assignedItems.append(listItem);
-}
+assignItems.addEventListener("click", function () {
+    assignItems(); // this line is how to "call" a function.
+});
