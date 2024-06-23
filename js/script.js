@@ -24,9 +24,6 @@ addGuestButton.addEventListener("click", function () {
         addToList(guest);
         updateGuestCount();
         clearInput();
-        //     let listItem = document.createElement("li");
-        //     listItem.innerText = guest;
-        //     guestList.append(listItem);    
     }
 });
 
@@ -38,7 +35,7 @@ const clearInput = function () {
 
 //  ====== REFACTORED CODE ====== 
 const addToList = function (guest) {
-    let listItem = document.createElement("li");
+    const listItem = document.createElement("li");
     listItem.innerText = guest;
     guestList.append(listItem);
 };
@@ -81,9 +78,12 @@ const assignItems = function () {
         let listItem = document.createElement("li");
         listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
         assignedItems.append(listItem);
+
+        potluckItems.splice(randomPotluckIndex, 1);
     }
 };
 
-assignItems.addEventListener("click", function () {
+assignButton.addEventListener("click", function () {
     assignItems(); // this line is how to "call" a function.
+    assignButton.disabled = true;
 });
